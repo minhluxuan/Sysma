@@ -3,6 +3,17 @@ from sympy import symbols
 from sympy.solvers import solve
 from sklearn.metrics import r2_score
 import datetime as dt
+from sympy import symbols
+from sympy.solvers import solve
+import numpy
+import pandas
+
+from sklearn.metrics import r2_score,mean_squared_error
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+import datetime as dt
+import pandas
+import matplotlib.pyplot as plt
 
 #Tìm phần tử lớn nhất trong list
 def max(a):
@@ -17,7 +28,7 @@ def reaverage(ypoints,xpoints):
     reimann_sum = 0
     for i in range(len(xpoints)-1):
         reimann_sum += ypoints[i]*(xpoints[i+1]-xpoints[i])
-    return reimann_sum/(len(xpoints)-1)
+    return reimann_sum/(xpoints[len(xpoints)-1]-xpoints[0])
 
 #Tính giá trị trung bình các phần tử trong list
 def average(a):
@@ -72,25 +83,25 @@ def find_solution(vecto_c):
     return solutions
 
 #Khảo sát tính đơn điệu của hàm đa thức
-def analyze_function(model):
+def exam_function(model):
     model_der_c = model.deriv().c
     solutions = find_solution(model_der_c)
     string = ""
     if (model.deriv()(solutions[0]-0.01)) > 0:
-        string += "Tăng trong khoảng 7 - " + str(int(solutions[0]/60+7)) + '\n'
+        string += "Tăng trong khoảng âm vô cùng - " + str(int(solutions[0]/60+7)) + '\n'
     elif (model.deriv()(solutions[0]-0.01)) < 0:
-        string += "Giảm trong khoảng 7 - " + str(int(solutions[0]/60+7)) + '\n'
+        string += "Giảm trong khoảng âm vô cùng - " + str(int(solutions[0]/60+7)) + '\n'
     for i in range(len(solutions)):
         if (model.deriv()(solutions[i]+0.01)) < 0:
             if(i+1<len(solutions)):
                 string += "Giảm trong khoảng " + str(int(solutions[i]/60+7)) + " - " + str(int(solutions[i+1]/60+7)) + '\n'
             else:
-                string += "Giảm trong khoảng " + str(int(solutions[i]/60+7)) + " - 22" + '\n'
+                string += "Giảm trong khoảng " + str(int(solutions[i]/60+7)) + " - cộng vô cùng" + '\n'
         elif (model.deriv()(solutions[i]+0.01)) > 0:
             if(i+1<len(solutions)):
                 string += "Tăng trong khoảng " + str(int(solutions[i]/60+7)) + " - " + str(int(solutions[i+1]/60+7)) + '\n'
             else:
-                string += "Tăng trong khoảng " + str(int(solutions[i]/60+7)) + " - 22" + '\n'
+                string += "Tăng trong khoảng " + str(int(solutions[i]/60+7)) + " - cộng vô cùng" + '\n'
     return string
 
 #Tìm phần tử có mode lớn nhất trong list
@@ -111,8 +122,7 @@ def single_hour_convert(time):
         time = dt.datetime.strptime(time, '%H:%M:%S')
     hour = int(time.strftime('%H'))
     min = int(time.strftime('%M'))
-    sec = int(time.strftime('%S'))
-    return hour + min / 60 + sec/3600
+    return hour + min / 60
 
 #Chuyển danh sách thời điểm dạng datetime hoặc time thành danh sách giờ (số thực)
 def hour_convert(time_list):
@@ -124,7 +134,7 @@ def hour_convert(time_list):
 #Chuyển thời điểm dạng datetime hoặc time thành phút (số thực)
 def single_min_convert(time):
     try:
-        time = dt.datetime.strptime(time, '%d/%m/%Y %H:%M:%S')
+        time = dt.datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
     except:
         time = dt.datetime.strptime(time, '%H:%M:%S')
     hour = int(time.strftime('%H'))
@@ -136,8 +146,123 @@ def single_min_convert(time):
 def min_convert(time_list):
     converted_list = []
     for x in time_list:
-        converted_list.append(single_hour_convert(x))
+        converted_list.append(single_min_convert(x))
     return converted_list
 
+# hàm bestsell_time trả về các khung giờ bán chạy nhất trong 1 ngày
+def bestsell_time(sale_list, time_list): # 7-8, 8-9   
+    max_product = sale_list[0]
+    list_bestseller = []
+    for i in range(len(sale_list)):
+        if sale_list[i] > max_product:
+            max_product = sale_list[i]
+    for i in range (len(sale_list)):
+        if sale_list[i] == max_product:
+            list_bestseller.append(time_list[i])
+    return list_bestseller
+
+#Tính tổng số lượng sản phẩm bán được trong từng khung giờ,
+# trả về khung giờ bán được nhiều sản phẩm nhất (bán chạy nhất)
+def prod_hour(list_prod,list_time):
+    temp = list_time[0]
+    list_sell = []
+    sum = 0
+    for i in range(len(list_prod)):
+        temp0 = list_time[i]
+        if (temp == temp0):
+            sum += list_prod[i] 
+        if (temp != temp0):
+            list_sell.append(sum)
+            sum = list_prod[i]
+            temp = temp0
+    list_sell.append(sum)
+    return list_sell
+
+# hàm trả về tổng số lượng 1 sản phẩm bán được trong 1 ngày
+def sale_day(sale_list):
+    total = 0
+    for i in range (len(sale_list)):
+        total += sale_list[i]
+    return total
+
+
+# hàm tính giá trị  trung bình của 1 sản phẩm bán được trong 1 giờ trên ngày 
+def average_day(sale_day):
+    return float(sale_day)/float(15)
+
+# hàm doanh thu của sản phẩm ứng với sản phẩm được bán ra trong 1 ngày 
+def revenue(sale_day, price):
+    return sale_day*price
+
+# hàm tính lợi nhuận sản phẩm được bán ra trong 1 ngày
+def profit(sale_day, price, cost):
+    return sale_day*(price-cost)
+
+# hàm tính tổng sản phẩm bán được trong 1 tuần
+def sale_week(sale_days_list):
+    total = 0
+    for i in range(len(sale_days_list)):
+        total += sale_days_list[i]
+    return total
+
+# hàm trả về danh sách các ngày bán chạy trong tuần
+def bestsell_week(sale_days_list): #sale_days_list là list số lượng sản phẩm bán được trong các ngày từ thứ hai đến chủ nhật, sắp xếp theo chiều tăng của chỉ số
+    res = []
+    days = ['Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy','Chủ nhật']
+    average = average(sale_days_list)
+    for i in range(len(sale_days_list)):
+        if sale_days_list[i]>=average:
+            res.append(days[i])
+    return res
+
+#Đề xuất bậc tốt nhất cho hàm đa biến
+def rec_deg(X,y):
+    mean_squared_error_list = []
+    number_degrees = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    for degree in number_degrees:
+        #Khai báo sử dụng mô hình hồi quy đa biến bậc degree
+        poly_reg = PolynomialFeatures(degree=degree)
+        X_poly = poly_reg.fit_transform(X)
+        #Mô hình hồi quy đa biến
+        model=poly_reg.fit_transform(np.array(X))
+        poly_reg.fit(X_poly,y)
+        lin_reg = LinearRegression()
+        lin_reg.fit(X_poly, y)
+        y_pred = lin_reg.predict(model)
+        mean_squared_error_list.append(mean_squared_error(y,y_pred,squared=False))
+    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]
+    return degree
+
+#Dự đoán lợi nhuận
+def predict_sale(data,price,time):
+    dataset = pandas.read_csv(data)
+    X = dataset.iloc[:,0:2].values
+    y = dataset.iloc[:,2].values
+    mean_squared_error_list = []
+    number_degrees = [1,2,3,4,5,6,7,8,9,10]
+    degree = rec_deg(X,y)
+    poly_reg = PolynomialFeatures(degree=degree)
+    X_poly = poly_reg.fit_transform(X)
+    model = poly_reg.fit_transform(np.array([[price,time]]))
+    poly_reg.fit(X_poly, y)
+    lin_reg = LinearRegression()
+    lin_reg.fit(X_poly, y)
+    predicted_sale = lin_reg.predict(model)
+    return predicted_sale[0]
+
+#Đề xuất mức giá để thu được doanh thu lớn nhất
+def rec_saleoff(data,cost,limit,time):
+    dataset = pandas.read_csv(data)
+    X = dataset.iloc[:,0:2].values
+    y = dataset.iloc[:,2].values
+    sales = []
+    prices = []
+    inc = 0
+    while inc <= limit:
+        price = cost + inc
+        sales.append(predict_sale(data,price,time))
+        prices.append(price)
+        inc+=0.1
+    return prices[sales.index(max(sales))]
 
 
