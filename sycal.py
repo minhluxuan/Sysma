@@ -230,7 +230,7 @@ def rec_deg(X,y):
         lin_reg.fit(X_poly, y)
         y_pred = lin_reg.predict(model)
         mean_squared_error_list.append(mean_squared_error(y,y_pred,squared=False))
-    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]
+    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]-1
     return degree
 
 #Dự đoán lợi nhuận
