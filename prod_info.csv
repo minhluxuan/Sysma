@@ -1,4 +1,4 @@
-prod_id,prod_name,cost,price,item,quantity,exp
+prod_id,prod_name,cost_price,price,item,quantity,exp
 1,Lê đường túi 1kg (4 - 6 trái),30000,32500,Rau củ trái cây,100,2023/2/15
 2,Dưa hấu đỏ,40000,41000,Rau củ trái cây,60,2023/2/15
 3,Quýt giống Úc túi 1kg (5 - 9 trái),65000,67000,Rau củ trái cây,55,2023/2/15
