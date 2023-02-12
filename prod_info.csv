@@ -1,51 +1,51 @@
-prod_id,prod_name,cost_price,price,item,quantity,exp
-1,Lê đường túi 1kg (4 - 6 trái),30000,32500,Rau củ trái cây,100,2023/2/15
-2,Dưa hấu đỏ,40000,41000,Rau củ trái cây,60,2023/2/15
-3,Quýt giống Úc túi 1kg (5 - 9 trái),65000,67000,Rau củ trái cây,55,2023/2/15
-4,Bưởi da xanh,41000,42300,Rau củ trái cây,30,2023/2/15
-5,Dưa lưới tròn ruột cam,30000,31000,Rau củ trái cây,50,2023/2/15
-6,Lốc 3 hộp sữa tươi nguyên kem không đường Inex 200ml,33000,34000,Sữa,100,2023/12/30
-7,Lốc 4 hộp sữa tươi tiệt trùng có đường Kun 180ml,38500,40000,Sữa,100,2023/12/30
-8,Lốc 3 hộp thức uống ngũ cốc uống liền Milo 180ml,28500,30000,Sữa,100,2023/12/30
-9,Lốc 3 hộp sữa tươi tiệt trùng socola Meadow Fresh 200ml,30000,33000,Sữa,100,2023/12/30
-10,Lốc 4 hộp sữa lúa mạch hương socola LOF Malto 180ml,38500,39000,Sữa,100,2023/12/30
-11,Đậu phộng tỏi ớt Tài Tài hũ 250g,24000,25000,Bánh kẹo,200,2024/4/30
-12,Bánh bông lan kem cốm Custas hộp 276g,65000,67000,Bánh kẹo,200,2024/4/30
-13,Bánh cá vị rong biển tuyết xanh Orion Marine Boy hộp 32g,95000,10000,Bánh kẹo,200,2024/4/30
-14,Bánh Choco-pie hộp 660g (20 cái),60000,65000,Bánh kẹo,200,2024/4/30
-15,Bánh Choco-pie kem mềm vị hạnh nhân hộp 276g,50000,56000,Bánh kẹo,200,2024/4/30
-16,6 lon bia Sài Gòn Lager 330ml,65000,70000,Bia nước giải khát,100,2026/1/1
-17,6 lon bia Heineken Sleek 330ml,110000,118000,Bia nước giải khát,100,2026/1/1
-18,Nước cam ép Twister Tropicana 455ml,8000,9500,Bia nước giải khát,100,2026/1/1
-19,Nước trái cây Pororo hương vị chuối 235ml,18000,20000,Bia nước giải khát,100,2026/1/1
-20,Mật ong hoa cà phê TracyBee chai 600ml,200000,230000,Bia nước giải khát,100,2026/1/1
-21,Dầu olive Extra Virgin Olivitaly for kids chai 250ml,500000,54000,Dầu ăn Nước chấm Gia vị,200,2024/3/31
-22,Dầu hạt cải Kankoo chai 1 lít,60000,63000,Dầu ăn Nước chấm Gia vị,200,2024/3/31
-23,Nước mắm cá cơm Phúc Sơn 35 độ đạm chai 650ml,55000,59000,Dầu ăn Nước chấm Gia vị,200,2024/3/31
-24,Nước tương Nhị Ca Tam Thái Tử chai 500ml,6500,8800,Dầu ăn Nước chấm Gia vị,200,2024/3/31
-25,Tiêu đen xay Dh Foods 45g,17500,19100,Dầu ăn Nước chấm Gia vị,200,2024/3/31
-26,Kem Topten Socola Wall's cây 55g,10000,11500,Kem Thực phẩm đông mát,200,2024/3/31
-27,Kem dưa lưới Melona cây 80ml,22500,24500,Kem Thực phẩm đông mát,200,2024/3/31
-28,Kem dâu Iberri hộp 500ml,55000,59000,Kem Thực phẩm đông mát,200,2024/3/31
-29,Kem Vani Iberri hộp 500ml,55000,59000,Kem Thực phẩm đông mát,200,2024/3/31
-30,Bánh xếp hải sản Bibigo 175g,28000,32000,Kem Thực phẩm đông mát,200,2024/3/31
-31,Xúc xích vị bò hầm đậu nành Xuxifarm gói 175g,16500,18700,Gạo Bột Đồ khô,200,2023/7/31
-32,Xúc xích heo tiệt trùng LC FOODS gói 200g,17000,19600,Gạo Bột Đồ khô,200,2023/7/31
-33,Cá ngừ trắng ngâm dầu Dongwon hộp 100g,20000,23000,Gạo Bột Đồ khô,200,2023/7/31
-34,Thịt xay cao cấp Seaspimex hộp 150g,16000,20000,Gạo Bột Đồ khô,200,2023/7/31
-35,Rong nho tách nước OKI-BUDO hộp 10 gói x 25g,180000,205000,Gạo Bột Đồ khô,200,2023/7/31
-36,Kem dưỡng Olay ngừa lão hóa 50g,510000,549000,Chăm sóc cá nhân,100,2027/1/1
-37,Tẩy trang Evoluderm da hỗn hợp dầu mụn 500ml,130000,148000,Chăm sóc cá nhân,100,2027/1/1
-38,Lotion Hada Labo dưỡng trắng 100ml,89600,100000,Chăm sóc cá nhân,100,2027/1/1
-39,Mặt nạ giảm mụn Acnes 3 miếng,26000,30000,Chăm sóc cá nhân,100,2027/1/1
-40,Tẩy trang Calliderm dưỡng ẩm 250ml,86700,91000,Chăm sóc cá nhân,100,2027/1/1
-41,Gel chống nắng Naris Cosmetics trắng da 80g,300500,326000,Sản phẩm cho mẹ và bé,300,2026/12/31
-42,Mặt nạ ngủ Senka cấp ẩm 50g,120000,136500,Sản phẩm cho mẹ và bé,300,2026/12/31
-43,Xịt chống nắng Naris Cosmetics nâng tông 80g,250000,277000,Sản phẩm cho mẹ và bé,300,2026/12/31
-44,Kem chống nắng Skin1004 Air-Fit Suncream Plus 50ml,248400,259300,Sản phẩm cho mẹ và bé,300,2026/12/31
-45,Tẩy da chết Calliderm lô hội 150ml,84000,91000,Sản phẩm cho mẹ và bé,300,2026/12/31
-46,Nước xịt vải Downy huyền bí 370ml,91300,99000,Vệ sinh nhà cửa,300,2030/1/1
-47,Túi thơm Sunflower hoa nhài 30g,15600,18000,Vệ sinh nhà cửa,300,2030/1/1
-48,Long não Mr Fresh chanh 120g,13700,15000,Vệ sinh nhà cửa,300,2030/1/1
-49,Nước xả Giel lavender 1.3 lít,108000,118000,Vệ sinh nhà cửa,300,2030/1/1
-50,Nước tẩy vải màu AXO tươi mát 400ml,17900,22000,Vệ sinh nhà cửa,300,2030/1/1
+prod_id,prod_name,cost,price,item,quantity,exp
+1,Lê đường túi 1kg (4 - 6 trái),30000,32500,rau củ trái cây,100,2023/2/15
+2,Dưa hấu đỏ,40000,41000,rau củ trái cây,60,2023/2/15
+3,Quýt giống Úc túi 1kg (5 - 9 trái),65000,67000,rau củ trái cây,55,2023/2/15
+4,Bưởi da xanh,41000,42300,rau củ trái cây,30,2023/2/15
+5,Dưa lưới tròn ruột cam,30000,31000,rau củ trái cây,50,2023/2/15
+6,Lốc 3 hộp sữa tươi nguyên kem không đường Inex 200ml,33000,34000,sữa,100,2023/12/30
+7,Lốc 4 hộp sữa tươi tiệt trùng có đường Kun 180ml,38500,40000,sữa,100,2023/12/30
+8,Lốc 3 hộp thức uống ngũ cốc uống liền Milo 180ml,28500,30000,sữa,100,2023/12/30
+9,Lốc 3 hộp sữa tươi tiệt trùng socola Meadow Fresh 200ml,30000,33000,sữa,100,2023/12/30
+10,Lốc 4 hộp sữa lúa mạch hương socola LOF Malto 180ml,38500,39000,sữa,100,2023/12/30
+11,Đậu phộng tỏi ớt Tài Tài hũ 250g,24000,25000,bánh kẹo,200,2024/4/30
+12,Bánh bông lan kem cốm Custas hộp 276g,65000,67000,bánh kẹo,200,2024/4/30
+13,Bánh cá vị rong biển tuyết xanh Orion Marine Boy hộp 32g,95000,10000,bánh kẹo,200,2024/4/30
+14,Bánh Choco-pie hộp 660g (20 cái),60000,65000,bánh kẹo,200,2024/4/30
+15,Bánh Choco-pie kem mềm vị hạnh nhân hộp 276g,50000,56000,bánh kẹo,200,2024/4/30
+16,6 lon bia Sài Gòn Lager 330ml,65000,70000,bia nước giải khát,100,2026/1/1
+17,6 lon bia Heineken Sleek 330ml,110000,118000,bia nước giải khát,100,2026/1/1
+18,Nước cam ép Twister Tropicana 455ml,8000,9500,bia nước giải khát,100,2026/1/1
+19,Nước trái cây Pororo hương vị chuối 235ml,18000,20000,bia nước giải khát,100,2026/1/1
+20,Mật ong hoa cà phê TracyBee chai 600ml,200000,230000,bia nước giải khát,100,2026/1/1
+21,Dầu olive Extra Virgin Olivitaly for kids chai 250ml,500000,54000,dầu ăn nước chấm gia vị,200,2024/3/31
+22,Dầu hạt cải Kankoo chai 1 lít,60000,63000,dầu ăn nước chấm gia vị,200,2024/3/31
+23,Nước mắm cá cơm Phúc Sơn 35 độ đạm chai 650ml,55000,59000,dầu ăn nước chấm gia vị,200,2024/3/31
+24,Nước tương Nhị Ca Tam Thái Tử chai 500ml,6500,8800,dầu ăn nước chấm gia vị,200,2024/3/31
+25,Tiêu đen xay Dh Foods 45g,17500,19100,dầu ăn nước chấm gia vị,200,2024/3/31
+26,Kem Topten Socola Wall's cây 55g,10000,11500,kem thực phẩm đông mát,200,2024/3/31
+27,Kem dưa lưới Melona cây 80ml,22500,24500,kem thực phẩm đông mát,200,2024/3/31
+28,Kem dâu Iberri hộp 500ml,55000,59000,kem thực phẩm đông mát,200,2024/3/31
+29,Kem Vani Iberri hộp 500ml,55000,59000,kem thực phẩm đông mát,200,2024/3/31
+30,Bánh xếp hải sản Bibigo 175g,28000,32000,kem thực phẩm đông mát,200,2024/3/31
+31,Xúc xích vị bò hầm đậu nành Xuxifarm gói 175g,16500,18700,gạo bột đồ khô,200,2023/7/31
+32,Xúc xích heo tiệt trùng LC FOODS gói 200g,17000,19600,gạo bột đồ khô,200,2023/7/31
+33,Cá ngừ trắng ngâm dầu Dongwon hộp 100g,20000,23000,gạo bột đồ khô,200,2023/7/31
+34,Thịt xay cao cấp Seaspimex hộp 150g,16000,20000,gạo bột đồ khô,200,2023/7/31
+35,Rong nho tách nước OKI-BUDO hộp 10 gói x 25g,180000,205000,gạo bột đồ khô,200,2023/7/31
+36,Kem dưỡng Olay ngừa lão hóa 50g,510000,549000,chăm sóc cá nhân,100,2027/1/1
+37,Tẩy trang Evoluderm da hỗn hợp dầu mụn 500ml,130000,148000,chăm sóc cá nhân,100,2027/1/1
+38,Lotion Hada Labo dưỡng trắng 100ml,89600,100000,chăm sóc cá nhân,100,2027/1/1
+39,Mặt nạ giảm mụn Acnes 3 miếng,26000,30000,chăm sóc cá nhân,100,2027/1/1
+40,Tẩy trang Calliderm dưỡng ẩm 250ml,86700,91000,chăm sóc cá nhân,100,2027/1/1
+41,Gel chống nắng Naris Cosmetics trắng da 80g,300500,326000,sản phẩm cho mẹ và bé,300,2026/12/31
+42,Mặt nạ ngủ Senka cấp ẩm 50g,120000,136500,sản phẩm cho mẹ và bé,300,2026/12/31
+43,Xịt chống nắng Naris Cosmetics nâng tông 80g,250000,277000,sản phẩm cho mẹ và bé,300,2026/12/31
+44,Kem chống nắng Skin1004 Air-Fit Suncream Plus 50ml,248400,259300,sản phẩm cho mẹ và bé,300,2026/12/31
+45,Tẩy da chết Calliderm lô hội 150ml,84000,91000,sản phẩm cho mẹ và bé,300,2026/12/31
+46,Nước xịt vải Downy huyền bí 370ml,91300,99000,vệ sinh nhà cửa,300,2030/1/1
+47,Túi thơm Sunflower hoa nhài 30g,15600,18000,vệ sinh nhà cửa,300,2030/1/1
+48,Long não Mr Fresh chanh 120g,13700,15000,vệ sinh nhà cửa,300,2030/1/1
+49,Nước xả Giel lavender 1.3 lít,108000,118000,vệ sinh nhà cửa,300,2030/1/1
+50,Nước tẩy vải màu AXO tươi mát 400ml,17900,22000,vệ sinh nhà cửa,300,2030/1/1
