@@ -230,16 +230,22 @@ def rec_deg(X,y):
         lin_reg.fit(X_poly, y)
         y_pred = lin_reg.predict(model)
         mean_squared_error_list.append(mean_squared_error(y,y_pred,squared=False))
-    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]-1
+    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]
     return degree
 
 #Dự đoán lợi nhuận
-def predict_sale(data,price,time):
-    dataset = pandas.read_csv(data)
-    X = dataset.iloc[:,0:2].values
-    y = dataset.iloc[:,2].values
-    mean_squared_error_list = []
-    number_degrees = [1,2,3,4,5,6,7,8,9,10]
+def predict_sale(prod_id,price,time):
+    client = pymongo.MongoClient('localhost', 27017)
+    db = client['<database_name>']#Sửa lại tên database
+    col = db['saleoff_history']#Đặt tên collection là saleoff_history
+    query = {'prod_id':prod_id}
+    X=[]
+    y=[]
+    for data in col.find(query):
+        X.append([data['price'],data['time']])
+        y.append(data['sale'])
+    X=np.array(X)
+    y=np.array(y)
     degree = rec_deg(X,y)
     poly_reg = PolynomialFeatures(degree=degree)
     X_poly = poly_reg.fit_transform(X)
@@ -251,18 +257,15 @@ def predict_sale(data,price,time):
     return predicted_sale[0]
 
 #Đề xuất mức giá để thu được doanh thu lớn nhất
-def rec_saleoff(data,cost,limit,time):
-    dataset = pandas.read_csv(data)
-    X = dataset.iloc[:,0:2].values
-    y = dataset.iloc[:,2].values
+def rec_saleoff(prod_id,cost,limit,time):
     sales = []
     prices = []
     inc = 0
     while inc <= limit:
         price = cost + inc
-        sales.append(predict_sale(data,price,time))
+        sales.append(predict_sale(prod_id,price,time))
         prices.append(price)
-        inc+=0.1
+        inc+=100
     return prices[sales.index(max(sales))]
 
 
