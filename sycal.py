@@ -150,7 +150,7 @@ def min_convert(time_list):
     return converted_list
 
 # hàm bestsell_time trả về các khung giờ bán chạy nhất trong 1 ngày
-def bestsell_time(sale_list, time_list): # 7-8, 8-9   
+def bestsell_time(sale_list, time_list):    
     max_product = sale_list[0]
     list_bestseller = []
     for i in range(len(sale_list)):
@@ -230,22 +230,16 @@ def rec_deg(X,y):
         lin_reg.fit(X_poly, y)
         y_pred = lin_reg.predict(model)
         mean_squared_error_list.append(mean_squared_error(y,y_pred,squared=False))
-    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]
+    degree = number_degrees[mean_squared_error_list.index(min(mean_squared_error_list))]-1
     return degree
 
 #Dự đoán lợi nhuận
-def predict_sale(prod_id,price,time):
-    client = pymongo.MongoClient('localhost', 27017)
-    db = client['<database_name>']#Sửa lại tên database
-    col = db['saleoff_history']#Đặt tên collection là saleoff_history
-    query = {'prod_id':prod_id}
-    X=[]
-    y=[]
-    for data in col.find(query):
-        X.append([data['price'],data['time']])
-        y.append(data['sale'])
-    X=np.array(X)
-    y=np.array(y)
+def predict_sale(data,price,time):
+    dataset = pandas.read_csv(data)
+    X = dataset.iloc[:,0:2].values
+    y = dataset.iloc[:,2].values
+    mean_squared_error_list = []
+    number_degrees = [1,2,3,4,5,6,7,8,9,10]
     degree = rec_deg(X,y)
     poly_reg = PolynomialFeatures(degree=degree)
     X_poly = poly_reg.fit_transform(X)
@@ -257,15 +251,126 @@ def predict_sale(prod_id,price,time):
     return predicted_sale[0]
 
 #Đề xuất mức giá để thu được doanh thu lớn nhất
-def rec_saleoff(prod_id,cost,limit,time):
+def rec_saleoff(data,cost,limit,time):
+    dataset = pandas.read_csv(data)
+    X = dataset.iloc[:,0:2].values
+    y = dataset.iloc[:,2].values
     sales = []
     prices = []
     inc = 0
     while inc <= limit:
         price = cost + inc
-        sales.append(predict_sale(prod_id,price,time))
+        sales.append(predict_sale(data,price,time))
         prices.append(price)
-        inc+=100
+        inc+=0.1
     return prices[sales.index(max(sales))]
 
+# hàm nhập vào năm, tháng, ngày, id_sản phẩm, file dữ liệu 
+# trả list thời gian 
+def list_time(y,m,d,pro_id,history):
+   list_time =[]
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and int(data["time"].day)==d and data["prod_id"]==pro_id):
+         list_time.append(int(data["time"].hour))
+   return list_time
 
+# hàm nhập vào năm, tháng, ngày, id_sản phẩm, file dữ liệu
+# trả về list số lượng sản phẩm bán được trên cơ sở ngày 
+def list_sell(y,m,d,pro_id,history):
+   list_sell =[]
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and int(data["time"].day)==d and data["prod_id"]==pro_id):
+         list_sell.append(data["qty"])
+   return list_sell
+
+# so bill san pham ban duoc trong 1 ngay 
+def sum_bill_day(y,m,d,pro_id,history):
+   sum_bill = 0
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and int(data["time"].day)==d and data["prod_id"]==pro_id):
+         sum_bill += 1
+   return sum_bill
+#ham tra ve so luong san pham ban duoc tren co so thang 
+def sum_bill_month(y,m,pro_id,history):
+   sum_bill = 0
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and data["prod_id"]==pro_id):
+         sum_bill += 1
+   return sum_bill
+
+# ham tra ve cac bill cua mat hang tren du lieu ngay 
+def list_bill_day(y,m,d,pro_id,history):
+   list_bill =[]
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and int(data["time"].day)==d and data["prod_id"]==pro_id):
+         list_bill.append(data["bill"])
+   return list_bill
+
+#ham tra ve cac bill cua mat hang trn du lieu thang 
+def list_bill_month(y,m,pro_id,history):
+   list_bill =[]
+   for data in history.find():
+      if(int(data["time"].year)==y and int(data["time"].month)==m and data["prod_id"]==pro_id):
+         list_bill.append(data["bill"])
+   return list_bill
+
+#ham tra ve tong so bill cua 1 id cung so thu tu bill tren du lieu ngay    
+def list_sum_prod_bill_day(y,m,d,pro_id,history,bill):
+        sum_bill_prod = 0
+        for data in history.find():
+            if (int(data["time"].year)==y and int(data["time"].month)==m and int(data["time"].day)==d and data["prod_id"]==pro_id and int(data["bill"]) == bill):
+                sum_bill_prod = sum_bill_prod + 1
+        return sum_bill_prod
+
+# ham tra ve tong so san pham cua 1 id cung so thu tu bill tren du lieu thang 
+def list_sum_prod_bill_month(y,m,pro_id,history,bill):
+        list_sum_bill_prod = 0
+        for data in history.find():
+            if (int(data["time"].year)==y and int(data["time"].month)==m and data["prod_id"]==pro_id and int(data["bill"]) == bill):
+                list_sum_bill_prod += 1
+        return list_sum_bill_prod
+
+# hàm đưa ra cách sắp xếp sản phẩm cho hợp lý tren du lieu 1 ngay
+def Product_arrangements_day(y,m,d,history):
+    matrix = np.zeros((50, 50))
+    list_result = []
+    for row in range(0,49):
+        list_bill_prod = list_bill_day(y,m,d,(row+1),history)
+        # print (list_bill_prod)
+        sum_bill = len(list_bill_prod)
+        # print (sum_bill)
+        for colm in range(0,49):
+            if(sum_bill == 0):
+                matrix[row][colm] = 0
+            else:
+                x = 0
+                for data in list_bill_prod:
+                    x += list_sum_prod_bill_day(y,m,d,(colm+1),history,data)
+                matrix[row][colm] = float(x/sum_bill)
+                if (matrix[row][colm] >= 0.8 and row != colm):
+                    data = (row+1),(colm+1)
+                    list_result.append(data)
+    return (list_result)
+
+# hàm đưa ra cách sắp xếp sản phẩm cho hợp lý tren du lieu 1 thang
+def Product_arrangements_month(y,m,history):
+    matrix = np.zeros((50, 50))
+    list_result = []
+    for row in range(0,49):
+        list_bill_prod = list_bill_month(y,m,(row+1),history)
+        # print (list_bill_prod)
+        sum_bill = len(list_bill_prod)
+        # print (sum_bill)
+        for colm in range(0,49):
+            if(sum_bill == 0):
+                matrix[row][colm] = 0
+            else:
+                x = 0
+                for data in list_bill_prod:
+                    x += list_sum_prod_bill_month(y,m,(colm+1),history,data)
+                matrix[row][colm] = float(x/sum_bill)
+                if (matrix[row][colm] >= 0.8 and row != colm):
+                    data = (row+1),(colm+1)
+                    list_result.append(data)
+    return (list_result)
+     
