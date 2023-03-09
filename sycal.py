@@ -265,6 +265,7 @@ def rec_saleoff(data,cost,limit,time):
         inc+=0.1
     return prices[sales.index(max(sales))]
 
+# Function to take the data from MongoDB Compass
 # hàm nhập vào năm, tháng, ngày, id_sản phẩm, file dữ liệu 
 # trả list thời gian 
 def list_time(y,m,d,pro_id,history):
