@@ -1,0 +1,105 @@
+body {
+    padding: 20px 0 0 0;
+    overflow: hidden;
+  }
+  
+  .logo{
+      margin: 20px 0 0 0;
+      text-align:center;
+      /* float: left;     */
+    }
+  .img1{
+    margin: 0;
+    border-style: solid;
+    border-color: yellow;
+    border-radius: 10px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    overflow-y: auto;
+    width:100vw;
+  }
+  .column {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .recomend-box {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 15px;
+    background-color: #f2f2f2;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 5px;
+  }
+  
+  .input-container {
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    border-top-color: dimgrey;
+  }
+  
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .fa-search {
+    color: #555;
+    font-size: 18px;
+    margin-left:1vw;
+  }
+  
+  #voice,#cam {
+    position: absolute;
+    padding: 10px;
+    margin-top:5%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #cam {
+    margin-left: 10%;
+  }
+  
+  button[type='submit']{
+    border: none;
+    outline: none;
+    background-color: darkblue;
+    color:white;
+    border-radius: 5px;
+  }
+  
+  
+  
+  
+  
+  

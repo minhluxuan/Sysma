@@ -1,0 +1,172 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "roboto", sans-serif;
+}
+
+header{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(210, 54, 30);
+    position: relative;
+}
+
+.logo{
+    width: 90px;
+    padding: 12px 12px;
+    
+}
+
+.mi_hai_tom{
+    margin-top: 50px;
+    width: 740px;
+}
+
+.title{
+    display: inline-block;
+    width: 600px;
+    text-align: center;
+    margin: 40px 25%; 
+    position: absolute;
+}
+
+.title h1{
+    font-family: "roboto", sans-serif;
+    color: blanchedalmond;
+}
+
+.infor{
+    float: right;
+}
+
+.menu{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 350px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    list-style: none;
+}
+
+.menu li{
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+    margin-left: 32px; 
+    background-color: rgb(255, 255, 255);
+    font-size: 25px;
+    border: 2px solid;
+    text-decoration: none;
+}
+
+.menu li a{
+    color: rgb(217, 74, 38);
+    text-decoration: none;
+    text-transform: none;
+}
+
+.imgage_product{
+    display: inline;
+    width: 100px;
+}
+
+.mi_hai_tom{
+    padding-right: 15px;
+    width: 500px;
+}
+
+.menu_noidung{
+    position: absolute;
+    width: 550px;
+    top: 25%;
+    left: 55%;
+    list-style: none;
+}
+
+.menu_noidung li{
+    border-radius: 5px;
+    color: rgba(247, 247, 243, 0.751);
+    padding-left: 10px;
+    margin-left: 12px; 
+    background-color: rgba(247, 247, 243, 0.751);
+    font-size: 25px;
+    border: 2px solid;
+    text-decoration: none;
+}
+
+.menu_noidung li a{
+    text-decoration: none;
+    text-transform: none;
+    color: rgb(211, 62, 62);
+}
+
+.infor .menu .button{
+    background-color: white;
+    font-family: "roboto", sans-serif;
+    border-radius: 5px;
+    color: rgb(231, 29, 29);
+    margin-top: 50px;
+    margin-left: 42px;
+    width: 120px;
+    height: 40px;
+    font-size: 22px;
+    border: none;
+}
+
+.infor .menu_noidung .button{
+    background-color: rgb(239, 190, 180);
+    color: rgb(231, 29, 29);
+    font-family: "roboto", sans-serif;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 122px;
+    width: 120px;
+    height: 40px;
+    font-size: 22px;
+    border: none;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+.Description h3{
+
+    margin-left: 40px;
+    width: 35%;
+}
+
+.Description h2{
+    position: relative;
+    margin-left: 950px;
+}
+
+.Description h3{
+    position: relative;
+    margin-left: 770px
+}
+
+
+.to_mi {
+    top: -220px;
+    right: 300px;
+    position: absolute;
+    width: 450px;
+    height: 250px;
+    padding-top: 100px;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    overflow-y: auto;
+    width:100vw;
+  }
+
+.colum1{
+    
+}
